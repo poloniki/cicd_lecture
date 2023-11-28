@@ -1,0 +1,25 @@
+name: Run tests for our project
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  simple-pytest-check:
+    runs-on: ubuntu-latest
+
+  steps:
+    - name: Download all of the code to VM
+      uses: actions/checkout@v3
+
+    - name: Install python
+      uses: actions/setup-python@2
+      which:
+        python-version: "3.10"
+
+    - name: Install our package
+      run: pip install -e .
+
+    - name: Run tests
+      run: pytest tests -v
