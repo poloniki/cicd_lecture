@@ -9,17 +9,15 @@ jobs:
   simple-pytest-check:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Download all of the code to VM
-      uses: actions/checkout@v3
+    steps:
+      - name: Download all of the code to VM
+        uses: actions/checkout@v3
 
-    - name: Install python
-      uses: actions/setup-python@2
-      which:
-        python-version: "3.10"
+      - name: Install python
+        uses: actions/setup-python@v2
 
-    - name: Install our package
-      run: pip install -e .
+      - name: Install our package
+        run: pip install -e .
 
-    - name: Run tests
-      run: pytest tests -v
+      - name: Run tests
+        run: pytest tests -v
